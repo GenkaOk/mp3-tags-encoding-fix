@@ -1,5 +1,9 @@
 # MP3 Tags Encoding Fix
 
+![Tests](https://github.com/GenkaOk/mp3-tags-encoding-fix/actions/workflows/python-tests.yml/badge.svg)
+
+Read in other languages: [Russian](https://github.com/GenkaOk/mp3-tags-encoding-fix/blob/master/README.ru.md)
+
 Small Python utility to read ID3 tags from MP3 files, fix common Cyrillic/encoding issues, and save corrected tags (optionally creating backup files). Includes a test suite with mocked ID3 objects to cover processing logic.
 
 ## Features
@@ -27,7 +31,6 @@ python -m pip install -r requirements.txt
 ## Project layout
 - mp3_processor.py — main script and library functions (including parse_and_fix_tags and decode_).
 - tests/test_mp3_processor.py — unittest suite (uses unittest.mock to replace EasyID3 and file ops).
-- tests/data — sample files used by tests (created/removed by tests).
 
 ## Usage
 
