@@ -1,13 +1,55 @@
-# MP3 tags encoding fix tool
+# MP3 Tags Encoding Fix
+
+Small Python utility to read ID3 tags from MP3 files, fix common Cyrillic/encoding issues, and save corrected tags (optionally creating backup files). Includes a test suite with mocked ID3 objects to cover processing logic.
+
+## Features
+- Decode/repair tag strings encoded with common mismatches (Latin-1 → CP1251 → UTF-8).
+- Process a single folder or walk directories recursively.
+- Optionally create backup (`-fix.mp3`) files or overwrite originals.
+- Dry-run mode to preview changes without writing files.
+
+## Requirements
+- Python 3.8+
+- mutagen
+
+Install dependencies:
+
+```bash
+python -m pip install mutagen
+```
+
+OR
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+## Project layout
+- mp3_processor.py — main script and library functions (including parse_and_fix_tags and decode_).
+- tests/test_mp3_processor.py — unittest suite (uses unittest.mock to replace EasyID3 and file ops).
+- tests/data — sample files used by tests (created/removed by tests).
 
 ## Usage
-- `python3 main.py {dir_path}`
 
-## Example
-```shell
-% python3.9 main.py .
--------------------- test.mp3 --------------------
-Was: {'album': ['ÀÐÄÈÑ www.ardisbook.ru'], 'copyright': ['© ÀÐÄÈÑ / Art Dictation Studio\x99, 2008'], 'title': ['Предисловие'], 'artist': ['Íàïîëåîí Õèëë'], 'albumartist': ['Íàïîëåîí Õèëë'], 'tracknumber': ['002'], 'genre': ['Àóäèîêíèãà'], 'date': ['2008']}
-Now: {'album': ['АРДИС www.ardisbook.ru'], 'copyright': ['© АРДИС / Art Dictation Studio™, 2008'], 'title': ['Предисловие'], 'artist': ['Наполеон Хилл'], 'albumartist': ['Наполеон Хилл'], 'tracknumber': ['002'], 'genre': ['Аудиокнига'], 'date': ['2008']}
---------------------------------------------------
+Run the script from the command line:
+
+```bash
+python mp3_processor.py PATH_TO_FOLDER [--recursive] [--backup yes|no] [--dry-run]
 ```
+
+Options:
+- PATH_TO_FOLDER — folder containing MP3 files to process.
+- --recursive — descend into subdirectories.
+- --backup yes|no — create backup files by default (`yes`). If `no`, tags are saved in-place.
+- --dry-run — do not write any files; only show what would be changed.
+
+Examples:
+- Process a single directory and create backups:
+  python mp3_processor.py ./music --backup yes
+- Process recursively and overwrite original files:
+  python mp3_processor.py ./music --recursive --backup no
+- Preview changes without writing:
+  python mp3_processor.py ./music --dry-run
+
+## License
+MIT License — feel free to reuse and adapt.
