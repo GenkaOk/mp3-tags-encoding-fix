@@ -48,11 +48,11 @@ Options:
 
 Examples:
 - Process a single directory and create backups:
-  python mp3_processor.py ./music --backup yes
+  `python mp3_processor.py ./music --backup yes`
 - Process recursively and overwrite original files:
-  python mp3_processor.py ./music --recursive --backup no
+  `python mp3_processor.py ./music --recursive --backup no`
 - Preview changes without writing:
-  python mp3_processor.py ./music --dry-run
+  `python mp3_processor.py ./music --dry-run`
 
 ## License
 MIT License — feel free to reuse and adapt.

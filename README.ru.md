@@ -49,11 +49,11 @@ python mp3_processor.py ПУТЬ_К_ПАПКЕ [--recursive] [--backup yes|no] [
 
 Примеры:
 - Обработать одну директорию и создать резервные копии:
-  python mp3_processor.py ./music --backup yes
+  `python mp3_processor.py ./music --backup yes`
 - Обработать рекурсивно и перезаписать оригиналы:
-  python mp3_processor.py ./music --recursive --backup no
+  `python mp3_processor.py ./music --recursive --backup no`
 - Предпросмотр изменений без записи:
-  python mp3_processor.py ./music --dry-run
+  `python mp3_processor.py ./music --dry-run`
 
 ## Лицензия
 MIT License — можно свободно использовать и адаптировать.
